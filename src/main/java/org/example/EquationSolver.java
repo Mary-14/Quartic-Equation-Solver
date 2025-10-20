@@ -6,22 +6,22 @@ public class EquationSolver {
     static final double EPSILON_VALS = 0.0001;
 
     public static void main(String [] args) {
-        System.out.println("Введите аргументы для уравнения 4-й степени a*x^4+b*x^3+c*x^2+d*x+e=0");
+        System.out.println("Enter the coefficients for the 4th degree equation a*x^4 + b*x^3 + c*x^2 + d*x + e = 0");
         Scanner scanner = new Scanner(System.in);
         try {
-            System.out.print("Введите коэффициент a: ");
+            System.out.print("Enter coefficient a: ");
             double a = scanner.nextDouble();
-            System.out.print("Введите коэффициент b: ");
+            System.out.print("Enter coefficient b: ");
             double b = scanner.nextDouble();
-            System.out.print("Введите коэффициент c: ");
+            System.out.print("Enter coefficient c: ");
             double c = scanner.nextDouble();
-            System.out.print("Введите коэффициент d: ");
+            System.out.print("Enter coefficient d: ");
             double d = scanner.nextDouble();
-            System.out.print("Введите коэффициент e: ");
+            System.out.print("Enter coefficient e: ");
             double e = scanner.nextDouble();
             List<Pair> roots = new ArrayList<>();
             if(a!=0){
-                System.out.println("Введите начальное приближение: ");
+                System.out.println("Enter the initial approximation: ");
                 double n = scanner.nextDouble();
                 solveEquation(a, b, c, d, e, n, roots);
             }else{
@@ -29,7 +29,7 @@ public class EquationSolver {
             }
             scanner.close();
             if (!roots.isEmpty()) {
-                System.out.println("Корни уравнения: ");
+                System.out.println("Roots of the equation: ");
                 for (Pair root : roots) {
                     if (root.im == 0) {
                         System.out.printf("%.4f%n", root.re);
@@ -41,7 +41,7 @@ public class EquationSolver {
             }
 
         } catch (Exception e) {
-            System.out.println("Ошибка: введено некорректное значение.");
+            System.out.println("Error: invalid input.");
             scanner.close();
         }
     }
@@ -83,7 +83,7 @@ public class EquationSolver {
                 xn1 = xn - funcVal / derivative;
                 n++;
                 if (n>100000) {
-                    System.out.println("Корень не найден");
+                    System.out.println("Root not found");
                     return;
                 }
             } while (!isZero(xn1 - xn));
@@ -144,9 +144,9 @@ public class EquationSolver {
             double x = -e / d;
             insert(x, 0, roots);
         } else if (e != 0) {
-            System.out.println("Нет корней");
+            System.out.println("No roots");
         } else {
-            System.out.println("x - любое");
+            System.out.println("x can be any value");
         }
     }
 
